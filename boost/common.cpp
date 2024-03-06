@@ -36,6 +36,19 @@ typedef boost::graph_traits< Graph >::vertex_iterator vertex_iterator;
 
 typedef boost::graph_traits< Graph >::edge_iterator edge_iterator;
 
+// Function to print a graph
+void print_graph(const Graph& g) {
+    boost::graph_traits<Graph>::vertex_iterator vi, vi_end;
+    for (boost::tie(vi, vi_end) = vertices(g); vi != vi_end; ++vi) {
+        cout << *vi << " --> ";
+        boost::graph_traits<Graph>::adjacency_iterator ai, ai_end;
+        for (boost::tie(ai, ai_end) = adjacent_vertices(*vi, g); ai != ai_end; ++ai) {
+            cout << *ai << " ";
+        }
+        cout << "\n";
+    }
+}
+
 int main(int argc, char** argv)
 {
     Graph iG, vG;
@@ -46,17 +59,19 @@ int main(int argc, char** argv)
     iG_o.push_back(boost::add_edge(0, 1, iG).first);
     iG_o.push_back(boost::add_edge(0, 2, iG).first);
     iG_o.push_back(boost::add_edge(0, 3, iG).first);
-    iG_o.push_back(boost::add_edge(0, 4, iG).first);
     iG_o.push_back(boost::add_edge(1, 2, iG).first);
-    iG_o.push_back(boost::add_edge(3, 4, iG).first);
+    iG_o.push_back(boost::add_edge(2, 3, iG).first);
+
+    cout << "Graph iG:" << endl;
+    print_graph(iG);
 
     // Adding edges to the second graph (vG)
-    vG_o.push_back(boost::add_edge(1, 2, vG).first);
-    vG_o.push_back(boost::add_edge(2, 0, vG).first);
+    vG_o.push_back(boost::add_edge(0, 1, vG).first);
+    vG_o.push_back(boost::add_edge(0, 2, vG).first);
     vG_o.push_back(boost::add_edge(2, 3, vG).first);
-    vG_o.push_back(boost::add_edge(4, 3, vG).first);
-    vG_o.push_back(boost::add_edge(0, 3, vG).first);
-    vG_o.push_back(boost::add_edge(0, 4, vG).first);
+
+    cout << "\nGraph vG:" << endl;
+    print_graph(vG);
 
     // Finding common spanning trees
     vector< bool > inL(iG_o.size(), false);
@@ -69,17 +84,13 @@ int main(int argc, char** argv)
 
     // Iterate and print each common spanning tree's edges
     std::vector< std::vector< bool > >::iterator it;
-    for (auto& tree : coll) {
-        cout << "Tree: ";
-        for (size_t i = 0; i < tree.size(); ++i) {
-            if (tree[i]) {
-                auto edge = iG_o[i];
-                auto sourceVertex = source(edge, iG);
-                auto targetVertex = target(edge, iG);
-                cout << "(" << sourceVertex << ", " << targetVertex << ") ";
+    for (it = coll.begin(); it != coll.end(); ++it) {
+        std::cout << "Tree:" << std::endl;
+        for (size_t i = 0; i < it->size(); ++i) {
+            if ((*it)[i]) {
+                std::cout << "(" << source(iG_o[i], iG) << ", " << target(iG_o[i], iG) << ")" << std::endl;
             }
         }
-        cout << endl;
     }
 
     return 0;
