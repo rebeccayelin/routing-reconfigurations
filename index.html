@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Routing Reconfigurations</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- analytics -->
     <script
       async
@@ -16,57 +19,66 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-X7RNMLQ05X");
     </script>
   </head>
   <body>
-    <header>
-      <h1>Routing Reconfigurations</h1>
-      <a href="https://rebeccayelin.github.io/">Rebecca Lin</a>,
-      <a href="https://www.wzyan.com/">Wenzhong Yan</a>,
-      <a href="https://uclalemur.com/">Ankur Mehta</a>, and
-      <a href="https://erikdemaine.org/">Erik D. Demaine</a>
-      <br />
-      <subtitle>May 15th, 2024</subtitle>
-    </header>
-
     <main>
+      <header class="paper-header">
+        <h1>Routing Reconfigurations</h1>
+        <div class="authors">
+          <p>
+            <a href="https://rebeccayelin.github.io/">Rebecca Lin</a> ·
+            <a href="https://www.wzyan.com/">Wenzhong Yan</a> ·
+            Ankur Mehta ·
+            <a href="http://erikdemaine.org">Erik D. Demaine</a>
+          </p>
+          <p class="affiliations">
+            MIT · UCLA
+          </p>
+          <p class="venue">
+            SCF 2024 — Demo
+          </p>
+          <a href="https://dl.acm.org/doi/10.1145/3665662.3673255" class="doi-button" target="_blank" rel="noopener">
+            <span class="doi-label">DOI</span>
+            <span class="doi-number">10.1145/3665662.3673255</span>
+          </a>
+        </div>
+      </header>
+
       <section id="abstract">
         <div class="example">
-          <img src="examples/triple.gif" alt="Reconfiguration" />
+          <img src="examples/triple.gif" alt="Reconfiguration Example" />
           <p class="caption">
-            Each string threaded through a series of units forms a unique target
+            Each string threaded through a collection of units forms a unique target
             shape when pulled taut.
           </p>
         </div>
         <b>Abstract.</b>
-        We propose an approach to reconfiguration: routing string through a
-        collection of geometric units so that pulling on different strings or
-        groups of strings automatically (re-)arranges the units into distinct
-        target configurations. We provide several strategies for smooth
-        reconfiguration, including computing minimum-turn routings and
-        optimizing the geometry of the units to reduce resistive force.
+        <p>
+          We propose an approach to reconfiguration: routing string through a
+          collection of geometric units so that pulling on different strings or
+          groups of strings automatically (re-)arranges the units into distinct
+          target configurations. We provide several strategies for smooth
+          reconfiguration, including computing minimum-turn routings and
+          optimizing the geometry of the units to reduce resistive force.
+        </p>
       </section>
-      <section>
-        <div class="gallery">
-          <div class="example">
-            <img src="examples/line-z.gif" alt="line to z" />
-          </div>
-          <div class="example">
-            <img src="examples/line-c.gif" alt="line to c" />
-          </div>
-        </div>
-        <div>
-          <div class="example">
-            <img src="examples/deploy.gif" alt="deploy" />
-          </div>
-        </div>
+
+      <section id="citation">
+        <h2>Citation</h2>
+        <pre class="bibtex"><code>@inproceedings{lin2024routing,
+  title={Routing Reconfigurations},
+  author={Lin, Rebecca and Yan, Wenzhong and Mehta, Ankur and Demaine, Erik D},
+  booktitle={Adjunct Proceedings of the 9th ACM Symposium on Computational Fabrication},
+  pages={1--3},
+  year={2024}
+}</code></pre>
       </section>
     </main>
 
     <footer>
-      <p>Routing Reconfigurations, 2024</p>
+      <p>© Routing Reconfigurations, 2024</p>
     </footer>
   </body>
 </html>
